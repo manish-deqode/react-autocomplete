@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/manish-task/static/css/main.59551a7d.chunk.css",
-    "main.js": "/manish-task/static/js/main.27863168.chunk.js",
-    "main.js.map": "/manish-task/static/js/main.27863168.chunk.js.map",
-    "runtime-main.js": "/manish-task/static/js/runtime-main.eafead9f.js",
-    "runtime-main.js.map": "/manish-task/static/js/runtime-main.eafead9f.js.map",
-    "static/js/2.f319e89d.chunk.js": "/manish-task/static/js/2.f319e89d.chunk.js",
-    "static/js/2.f319e89d.chunk.js.map": "/manish-task/static/js/2.f319e89d.chunk.js.map",
-    "static/js/3.35c04a7c.chunk.js": "/manish-task/static/js/3.35c04a7c.chunk.js",
-    "static/js/3.35c04a7c.chunk.js.map": "/manish-task/static/js/3.35c04a7c.chunk.js.map",
-    "index.html": "/manish-task/index.html",
-    "static/css/main.59551a7d.chunk.css.map": "/manish-task/static/css/main.59551a7d.chunk.css.map",
-    "static/js/2.f319e89d.chunk.js.LICENSE.txt": "/manish-task/static/js/2.f319e89d.chunk.js.LICENSE.txt"
+    "main.css": "/react-autocomplete/static/css/main.59551a7d.chunk.css",
+    "main.js": "/react-autocomplete/static/js/main.d6e36ef5.chunk.js",
+    "main.js.map": "/react-autocomplete/static/js/main.d6e36ef5.chunk.js.map",
+    "runtime-main.js": "/react-autocomplete/static/js/runtime-main.45751cb2.js",
+    "runtime-main.js.map": "/react-autocomplete/static/js/runtime-main.45751cb2.js.map",
+    "static/js/2.f319e89d.chunk.js": "/react-autocomplete/static/js/2.f319e89d.chunk.js",
+    "static/js/2.f319e89d.chunk.js.map": "/react-autocomplete/static/js/2.f319e89d.chunk.js.map",
+    "static/js/3.35c04a7c.chunk.js": "/react-autocomplete/static/js/3.35c04a7c.chunk.js",
+    "static/js/3.35c04a7c.chunk.js.map": "/react-autocomplete/static/js/3.35c04a7c.chunk.js.map",
+    "index.html": "/react-autocomplete/index.html",
+    "static/css/main.59551a7d.chunk.css.map": "/react-autocomplete/static/css/main.59551a7d.chunk.css.map",
+    "static/js/2.f319e89d.chunk.js.LICENSE.txt": "/react-autocomplete/static/js/2.f319e89d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.eafead9f.js",
+    "static/js/runtime-main.45751cb2.js",
     "static/js/2.f319e89d.chunk.js",
     "static/css/main.59551a7d.chunk.css",
-    "static/js/main.27863168.chunk.js"
+    "static/js/main.d6e36ef5.chunk.js"
   ]
 }
