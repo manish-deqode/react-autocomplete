@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/manish-task/static/css/main.59551a7d.chunk.css",
+    "main.js": "/manish-task/static/js/main.27863168.chunk.js",
+    "main.js.map": "/manish-task/static/js/main.27863168.chunk.js.map",
+    "runtime-main.js": "/manish-task/static/js/runtime-main.eafead9f.js",
+    "runtime-main.js.map": "/manish-task/static/js/runtime-main.eafead9f.js.map",
+    "static/js/2.f319e89d.chunk.js": "/manish-task/static/js/2.f319e89d.chunk.js",
+    "static/js/2.f319e89d.chunk.js.map": "/manish-task/static/js/2.f319e89d.chunk.js.map",
+    "static/js/3.35c04a7c.chunk.js": "/manish-task/static/js/3.35c04a7c.chunk.js",
+    "static/js/3.35c04a7c.chunk.js.map": "/manish-task/static/js/3.35c04a7c.chunk.js.map",
+    "index.html": "/manish-task/index.html",
+    "static/css/main.59551a7d.chunk.css.map": "/manish-task/static/css/main.59551a7d.chunk.css.map",
+    "static/js/2.f319e89d.chunk.js.LICENSE.txt": "/manish-task/static/js/2.f319e89d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eafead9f.js",
+    "static/js/2.f319e89d.chunk.js",
+    "static/css/main.59551a7d.chunk.css",
+    "static/js/main.27863168.chunk.js"
+  ]
+}
