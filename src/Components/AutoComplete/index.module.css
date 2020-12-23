@@ -1,0 +1,37 @@
+.searchContainer {
+  position: relative;
+}
+.inputSearch {
+  border-radius: 0px;
+}
+.inputSearch:focus {
+  box-shadow: none;
+}
+.optionsContainer {
+  position: absolute;
+  width: 100%;
+  border: 1px solid #80bdff;
+  background-color: #cccccc57;
+  border-radius: 0px;
+  padding: 8px;
+  border-top: none;
+  border-collapse: collapse;
+  top: 38px;
+}
+.option {
+  padding-left: 16px;
+}
+.option:hover {
+  color: #000;
+  cursor: pointer;
+}
+.activeOption {
+  color: #000;
+  cursor: pointer;
+  background-color: #80bdff;
+  padding-left: 16px;
+}
+.highlight {
+  background-color: #64a2e4;
+  color: #000;
+}
