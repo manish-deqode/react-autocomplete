@@ -22,26 +22,35 @@ const AutoComplete = () => {
     }
 
     useEffect(() => {
-        // Do not show suggestions if input value is empty
-        if (pageState.inputValue !== "") {
-            const lastCharacter = pageState.inputValue.slice(-1);
-            // Do not show suggestions if last character is space
-            if (lastCharacter === " ") {
-              handlePageState({ options: [], activeIndex: 0 });
-              return;
+        // Add timeout in API call. When user give short pause in typing then API will call
+        const timer = setTimeout(() => {
+            if (pageState.inputValue === inputRef.current.value) {
+                // Do not show suggestions if input value is empty
+                if (pageState.inputValue !== "") {
+                    const lastCharacter = pageState.inputValue.slice(-1);
+                    // Do not show suggestions if last character is space
+                    if (lastCharacter === " ") {
+                        handlePageState({ options: [], activeIndex: 0 });
+                        return;
+                    }
+        
+                    // Find suggestions based on last word
+                    const inputs = pageState.inputValue.split(" ").filter((word) => word !== "");
+                    const lastWordFromInput = inputs.pop();
+                    
+                    handlePageState({ searchedWord: lastWordFromInput });
+                    // Get All suggestions according to lastWordFromInput
+                    getSuggestions(lastWordFromInput).then((suggestions) => {
+                    handlePageState({ options: suggestions, activeIndex: 0, showOptions: true });
+                    }).catch(console.error);
+                } else {
+                    handlePageState({ options: [], activeIndex: 0 });
+                }
             }
-  
-            // Find suggestions based on last word
-            const inputs = pageState.inputValue.split(" ").filter((word) => word !== "");
-            const lastWordFromInput = inputs.pop();
-            
-            handlePageState({ searchedWord: lastWordFromInput });
-            getSuggestions(lastWordFromInput).then((suggestions) => {
-              handlePageState({ options: suggestions, activeIndex: 0, showOptions: true });
-            }).catch(console.error);
-        } else {
-            handlePageState({ options: [], activeIndex: 0 });
-        }
+        }, 500);
+        return () => {
+          clearTimeout(timer);
+        };
     }, [pageState.inputValue, inputRef]);
 
     // Highlights the matched characters in suggestions
