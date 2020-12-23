@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import getSuggestions from "../../Api/index";
 import styles from "./index.module.css";
 
 const AutoComplete = () => {
+    const wrapperRef = useRef();
     const inputRef = useRef();
     const [pageState, setPageState] = useState({
         inputValue: "",
@@ -52,6 +53,21 @@ const AutoComplete = () => {
           clearTimeout(timer);
         };
     }, [pageState.inputValue, inputRef]);
+
+    // Close options when click outside of div
+    const handleClickOutside = useCallback((event) => {
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        handlePageState({ showOptions: false });
+        }
+    }, []);
+
+    useEffect(() => {
+        // We are only listning to an Event. We are not manupulating in DOM
+        document.addEventListener('click', handleClickOutside, true);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, [handleClickOutside]);
 
     // Highlights the matched characters in suggestions
     const highlightOption = (option) => {
@@ -106,7 +122,7 @@ const AutoComplete = () => {
     };
 
     return (
-        <div className={styles.searchContainer}>
+        <div ref={wrapperRef} className={styles.searchContainer}>
             <div className="form-group">
                 <input
                     className={`form-control ${styles.inputSearch}`}
