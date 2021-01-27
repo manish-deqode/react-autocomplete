@@ -11,6 +11,7 @@ const AutoComplete = () => {
         activeIndex: 0,
         searchedWord: "",
         showOptions: false,
+        allWords: []
     });
 
     const handlePageState = (newStates) => {
@@ -34,15 +35,27 @@ const AutoComplete = () => {
                         handlePageState({ options: [], activeIndex: 0 });
                         return;
                     }
-        
+                    
+                    const inputs = pageState.inputValue.split(" ").filter(
+                        (word) => word !== "");
                     // Find suggestions based on last word
-                    const inputs = pageState.inputValue.split(" ").filter((word) => word !== "");
-                    const lastWordFromInput = inputs.pop();
+                    let lastWordFromInput = inputs[inputs.length - 1];
+                    if(pageState.allWords.length) { 
+                        const test = inputs.filter((word) => {
+                            return (pageState.allWords.includes(word) === false);
+                        });
+                        if(test.length && pageState.showOptions === true) {
+                            // Find suggestions based on changed word
+                            lastWordFromInput = test.shift();
+                        }
+                    }
+                    // Update all words
+                    handlePageState({ allWords: inputs });
                     
                     handlePageState({ searchedWord: lastWordFromInput });
                     // Get All suggestions according to lastWordFromInput
                     getSuggestions(lastWordFromInput).then((suggestions) => {
-                    handlePageState({ options: suggestions, activeIndex: 0, showOptions: true });
+                        handlePageState({ options: suggestions, activeIndex: 0, showOptions: true });
                     }).catch(console.error);
                 } else {
                     handlePageState({ options: [], activeIndex: 0 });
