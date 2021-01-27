@@ -112,6 +112,14 @@ const AutoComplete = () => {
         }
     };
 
+    const handleInputChange = (event) => {
+        if (/[^A-Za-z0-9 ]/.test(event.target.value)) {
+            event.preventDefault();
+            return;
+        }
+        handlePageState({ inputValue: event.target.value });
+    };
+
     // On select suggestion
     const onSelectOption = (inputOption) => {
         // If API does not return any result and value is selected, setting the typed value with space
@@ -151,7 +159,7 @@ const AutoComplete = () => {
                     spellCheck="false"
                     ref={inputRef}
                     value={pageState.inputValue}
-                    onChange={event => handlePageState({ inputValue: event.target.value })}
+                    onChange={handleInputChange}
                     onKeyDown={handleKeyPress}
                 />
             </div>
