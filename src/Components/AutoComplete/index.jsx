@@ -31,7 +31,7 @@ const AutoComplete = () => {
                 if (pageState.inputValue !== "") {
                     const lastCharacter = pageState.inputValue.slice(-1);
                     // Do not show suggestions if last character is space
-                    if (lastCharacter === " ") {
+                    if (lastCharacter === " " && inputRef.current.selectionStart === pageState.inputValue.length) {
                         handlePageState({ options: [], activeIndex: 0 });
                         return;
                     }
@@ -58,7 +58,7 @@ const AutoComplete = () => {
                         handlePageState({ options: suggestions, activeIndex: 0, showOptions: true });
                     }).catch(console.error);
                 } else {
-                    handlePageState({ options: [], activeIndex: 0 });
+                    handlePageState({ options: [], activeIndex: 0, allWords: [] });
                 }
             }
         }, 500);
@@ -121,7 +121,9 @@ const AutoComplete = () => {
             const words = pageState.inputValue.split(" ").map((w) => {
                 return w === pageState.searchedWord ? w.replace(new RegExp(pageState.searchedWord, 'g'), inputOption) : w
             });
-            updatedValue = `${words.join(" ")} `;
+            updatedValue = `${words.join(" ").trim()} `;
+            // Update all words
+            handlePageState({ allWords: words });
           }
           handlePageState({ inputValue: updatedValue, activeIndex: 0, options: [] });
         }
