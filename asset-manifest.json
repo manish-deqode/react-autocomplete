@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-autocomplete/static/css/main.59551a7d.chunk.css",
-    "main.js": "/react-autocomplete/static/js/main.d8d2b619.chunk.js",
-    "main.js.map": "/react-autocomplete/static/js/main.d8d2b619.chunk.js.map",
+    "main.js": "/react-autocomplete/static/js/main.a10fe9dd.chunk.js",
+    "main.js.map": "/react-autocomplete/static/js/main.a10fe9dd.chunk.js.map",
     "runtime-main.js": "/react-autocomplete/static/js/runtime-main.45751cb2.js",
     "runtime-main.js.map": "/react-autocomplete/static/js/runtime-main.45751cb2.js.map",
     "static/js/2.f319e89d.chunk.js": "/react-autocomplete/static/js/2.f319e89d.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.45751cb2.js",
     "static/js/2.f319e89d.chunk.js",
     "static/css/main.59551a7d.chunk.css",
-    "static/js/main.d8d2b619.chunk.js"
+    "static/js/main.a10fe9dd.chunk.js"
   ]
 }
