@@ -115,15 +115,13 @@ const AutoComplete = () => {
         // If API does not return any result and value is selected, setting the typed value with space
         if (inputOption === undefined) {
           handlePageState({ inputValue: (pageState.inputValue !== "" && pageState.inputValue.slice(-1) !== " ") ? pageState.inputValue.concat(" ") : pageState.inputValue });
-        } else {
-          // Append suggestion and update input value
-          const option = inputOption + " ";
-    
+        } else {    
           let updatedValue = pageState.inputValue;
           if (pageState.inputValue !== "") {
-            const words = pageState.inputValue.split(" ").slice(0, -1);
-            words.push(option);
-            updatedValue = words.join(" ");
+            const words = pageState.inputValue.split(" ").map((w) => {
+                return w === pageState.searchedWord ? w.replace(new RegExp(pageState.searchedWord, 'g'), inputOption) : w
+            });
+            updatedValue = `${words.join(" ")} `;
           }
           handlePageState({ inputValue: updatedValue, activeIndex: 0, options: [] });
         }
