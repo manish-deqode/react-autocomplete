@@ -56,7 +56,9 @@ const AutoComplete = () => {
                     // Get All suggestions according to lastWordFromInput
                     getSuggestions(lastWordFromInput).then((suggestions) => {
                         handlePageState({ options: suggestions, activeIndex: 0, showOptions: true });
-                    }).catch(console.error);
+                    }).catch((err) => {
+                        handlePageState({ options: [], activeIndex: 0 });
+                    });
                 } else {
                     handlePageState({ options: [], activeIndex: 0, allWords: [] });
                 }
@@ -117,14 +119,20 @@ const AutoComplete = () => {
           handlePageState({ inputValue: (pageState.inputValue !== "" && pageState.inputValue.slice(-1) !== " ") ? pageState.inputValue.concat(" ") : pageState.inputValue });
         } else {    
           let updatedValue = pageState.inputValue;
-          if (pageState.inputValue !== "") {
-            const words = pageState.inputValue.split(" ").map((w) => {
-                return w === pageState.searchedWord ? w.replace(new RegExp(pageState.searchedWord, 'g'), inputOption) : w
-            });
-            updatedValue = `${words.join(" ").trim()} `;
-            // Update all words
-            handlePageState({ allWords: words });
-          }
+            if (pageState.inputValue !== "") {
+                const currentPointer = inputRef.current.selectionStart;
+                let start = currentPointer - 1;
+                while(updatedValue[start] !== ' ' && start > 0) start = start - 1;
+                if (updatedValue[start] === ' ') start = start + 1;
+                let end = currentPointer;
+                while(updatedValue[end] !== ' ' && end < updatedValue.length) end = end + 1;
+                updatedValue = `${updatedValue.slice(0,start)}${inputOption}${end < updatedValue.length ? '' : ' '}${updatedValue.slice(end, updatedValue.length)}`;
+                updatedValue.trim();
+                if(updatedValue.slice(-1) !== ' ')
+                    updatedValue = `${updatedValue} `;
+                // Update all words
+                handlePageState({ allWords: updatedValue.split(" ") });
+            }
           handlePageState({ inputValue: updatedValue, activeIndex: 0, options: [] });
         }
     
